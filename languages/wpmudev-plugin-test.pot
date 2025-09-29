@@ -9,25 +9,180 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-08-28T16:10:12+00:00\n"
+"POT-Creation-Date: 2025-09-29T22:02:26+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.12.0\n"
+"X-Generator: WP-CLI 2.8.1\n"
 
 #. Plugin Name of the plugin
-#: wpmudev-plugin-test.php
 msgid "WPMU DEV Plugin Test - Forminator Developer Position"
 msgstr ""
 
 #. Description of the plugin
-#: wpmudev-plugin-test.php
 msgid "A plugin focused on testing coding skills."
 msgstr ""
 
 #. Author of the plugin
-#: wpmudev-plugin-test.php
 msgid "PLEASE ADD YOU FULL NAME HERE"
 msgstr ""
 
-#: app/admin-pages/class-googledrive-settings.php:81
+#: app/admin-pages/class-googledrive-settings.php:74
+#: app/admin-pages/class-googledrive-settings.php:97
+#: build/wpmudev-plugin-test/app/admin-pages/class-googledrive-settings.php:74
+#: build/wpmudev-plugin-test/app/admin-pages/class-googledrive-settings.php:97
 msgid "Google Drive Test"
+msgstr ""
+
+#: app/endpoints/v1/class-googledrive-rest.php:70
+#: build/wpmudev-plugin-test/app/endpoints/v1/class-googledrive-rest.php:70
+msgid "Insufficient permissions."
+msgstr ""
+
+#: app/endpoints/v1/class-googledrive-rest.php:75
+#: build/wpmudev-plugin-test/app/endpoints/v1/class-googledrive-rest.php:75
+msgid "Invalid REST nonce."
+msgstr ""
+
+#: app/endpoints/v1/class-googledrive-rest.php:129
+#: build/wpmudev-plugin-test/app/endpoints/v1/class-googledrive-rest.php:129
+msgid "Client ID and Client Secret are required."
+msgstr ""
+
+#: app/endpoints/v1/class-googledrive-rest.php:156
+#: build/wpmudev-plugin-test/app/endpoints/v1/class-googledrive-rest.php:156
+msgid "Authorization code not received."
+msgstr ""
+
+#: app/endpoints/v1/class-googledrive-rest.php:175
+#: build/wpmudev-plugin-test/app/endpoints/v1/class-googledrive-rest.php:175
+msgid "Authentication complete. You can close this window."
+msgstr ""
+
+#: app/endpoints/v1/class-googledrive-rest.php:218
+#: app/endpoints/v1/class-googledrive-rest.php:257
+#: app/endpoints/v1/class-googledrive-rest.php:297
+#: app/endpoints/v1/class-googledrive-rest.php:326
+#: build/wpmudev-plugin-test/app/endpoints/v1/class-googledrive-rest.php:218
+#: build/wpmudev-plugin-test/app/endpoints/v1/class-googledrive-rest.php:257
+#: build/wpmudev-plugin-test/app/endpoints/v1/class-googledrive-rest.php:297
+#: build/wpmudev-plugin-test/app/endpoints/v1/class-googledrive-rest.php:326
+msgid "Not authenticated with Google Drive."
+msgstr ""
+
+#: app/endpoints/v1/class-googledrive-rest.php:261
+#: build/wpmudev-plugin-test/app/endpoints/v1/class-googledrive-rest.php:261
+msgid "No file uploaded."
+msgstr ""
+
+#: app/endpoints/v1/class-googledrive-rest.php:302
+#: build/wpmudev-plugin-test/app/endpoints/v1/class-googledrive-rest.php:302
+msgid "File ID is required."
+msgstr ""
+
+#: app/endpoints/v1/class-googledrive-rest.php:331
+#: build/wpmudev-plugin-test/app/endpoints/v1/class-googledrive-rest.php:331
+msgid "Folder name is required."
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:36
+msgid "Google API Credentials"
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:39
+msgid "Enter your Google OAuth 2.0 Client ID and Client Secret."
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:41
+msgid "Client ID"
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:45
+msgid "Client Secret"
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:50
+msgid "Redirect URI:"
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:53
+msgid "Copy this URI to your Google Cloud Console OAuth credential configuration."
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:56
+msgid "Required Scopes"
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:64
+msgid "Update Credentials"
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:64
+msgid "Save Credentials"
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:80
+msgid "Auth URL not received"
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:92
+msgid "Authorization"
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:97
+msgid "Your site is authorized with Google Drive."
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:98
+msgid "You are not authorized yet. Click the button below to connect Google Drive."
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:104
+msgid "Redirecting…"
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:104
+msgid "Authorize with Google"
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:137
+msgid "Uploaded"
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:163
+msgid "Google Drive Files"
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:168
+msgid "Query"
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:172
+msgid "Page size"
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:177
+msgid "List files"
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:185
+msgid "Upload file"
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:190
+msgid "Upload"
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:198
+msgid "New folder name"
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:203
+msgid "Create folder"
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:217
+msgid "Open"
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:218
+msgid "Download"
 msgstr ""
