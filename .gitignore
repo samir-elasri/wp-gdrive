@@ -1,0 +1,71 @@
+# Dependencies
+node_modules/
+vendor/
+
+# Build outputs
+build/
+assets/css/*.min.css
+assets/css/*.css.map
+assets/js/*.min.js
+assets/js/*.js.map
+assets/js/*.asset.php
+
+# Development files
+*.log
+.DS_Store
+.vscode/
+.idea/
+.changelog
+
+# WordPress specific
+wp-config.php
+.htaccess
+
+# Temporary files
+*.tmp
+**/.afpDeleted*
+
+# Translation files (generated)
+languages/*.mo
+
+# Composer
+composer.lock
+
+# NPM
+package-lock.json
+yarn.lock
+
+# PHPUnit
+phpunit.xml
+coverage/
+.phpunit.result.cache
+
+# PHPCS
+.phpcs.xml
+
+# OS files
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE files
+*.sublime-project
+*.sublime-workspace
+.project
+.buildpath
+
+# Backup files
+*.bak
+*.backup
+*.orig
+
+# Cache directories
+.cache/
+tmp/
+temp/
+
+# Environment files
+.env
+.env.local
+.env.production
