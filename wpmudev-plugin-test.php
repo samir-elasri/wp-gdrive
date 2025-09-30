@@ -97,6 +97,23 @@ class WPMUDEV_PluginTest {
 	}
 }
 
+/**
+ * Load Posts Maintenance feature
+ */
+require_once __DIR__ . '/app/posts-maintenance/class-posts-maintenance.php';
+require_once __DIR__ . '/app/posts-maintenance/class-posts-maintenance-cron.php';
+require_once __DIR__ . '/app/posts-maintenance/class-posts-maintenance-cli.php';
+
+add_action( 'plugins_loaded', function() {
+    // Initialize the admin page + AJAX
+    $pm = new WPMUDEV_Posts_Maintenance();
+    $pm->init();
+
+    // Initialize daily cron
+    $cron = new WPMUDEV_Posts_Maintenance_Cron();
+    $cron->init();
+});
+
 // Init the plugin and load the plugin instance for the first time.
 add_action(
 	'init',
@@ -105,3 +122,4 @@ add_action(
 	},
 	9
 );
+

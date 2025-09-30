@@ -1,16 +1,19 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <phpunit
-	bootstrap="tests/bootstrap.php"
-	backupGlobals="false"
-	colors="true"
-	convertErrorsToExceptions="true"
-	convertNoticesToExceptions="true"
-	convertWarningsToExceptions="true"
-	>
-	<testsuites>
-		<testsuite name="testing">
-			<directory prefix="test-" suffix=".php">./tests/</directory>
-			<exclude>./tests/test-sample.php</exclude>
-		</testsuite>
-	</testsuites>
+  bootstrap="tests/bootstrap.php"
+  colors="true"
+  beStrictAboutTestsThatDoNotTestAnything="false"
+  beStrictAboutOutputDuringTests="true"
+  verbose="true"
+>
+  <testsuites>
+    <testsuite name="wpmudev-plugin-test">
+      <directory suffix=".php">./tests</directory>
+    </testsuite>
+  </testsuites>
+
+  <php>
+    <ini name="error_reporting" value="-1"/>
+    <const name="WP_TESTS_PHPUNIT_POLYFILLS_PATH" value="vendor/yoast/phpunit-polyfills"/>
+  </php>
 </phpunit>

@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-09-30T19:38:55+00:00\n"
+"POT-Creation-Date: 2025-09-30T19:49:19+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 
@@ -48,129 +48,137 @@ msgstr ""
 msgid "Authorization code not received."
 msgstr ""
 
-#: app/endpoints/v1/class-googledrive-rest.php:217
+#: app/endpoints/v1/class-googledrive-rest.php:223
+msgid "Authentication complete"
+msgstr ""
+
+#: app/endpoints/v1/class-googledrive-rest.php:241
 msgid "Authentication complete. You can close this window."
 msgstr ""
 
-#: app/endpoints/v1/class-googledrive-rest.php:259
-#: app/endpoints/v1/class-googledrive-rest.php:297
-#: app/endpoints/v1/class-googledrive-rest.php:338
-#: app/endpoints/v1/class-googledrive-rest.php:366
+#: app/endpoints/v1/class-googledrive-rest.php:243
+msgid "Return to settings"
+msgstr ""
+
+#: app/endpoints/v1/class-googledrive-rest.php:290
+#: app/endpoints/v1/class-googledrive-rest.php:328
+#: app/endpoints/v1/class-googledrive-rest.php:369
+#: app/endpoints/v1/class-googledrive-rest.php:397
 msgid "Not authenticated with Google Drive."
 msgstr ""
 
-#: app/endpoints/v1/class-googledrive-rest.php:300
+#: app/endpoints/v1/class-googledrive-rest.php:331
 msgid "No file uploaded."
 msgstr ""
 
-#: app/endpoints/v1/class-googledrive-rest.php:342
+#: app/endpoints/v1/class-googledrive-rest.php:373
 msgid "File ID is required."
 msgstr ""
 
-#: app/endpoints/v1/class-googledrive-rest.php:370
+#: app/endpoints/v1/class-googledrive-rest.php:401
 msgid "Folder name is required."
 msgstr ""
 
-#: assets/js/drivetestpage.min.js:593
+#: assets/js/drivetestpage.min.js:600
 msgid "Google API Credentials"
 msgstr ""
 
-#: assets/js/drivetestpage.min.js:596
+#: assets/js/drivetestpage.min.js:603
 msgid "Enter your Google OAuth 2.0 Client ID and Client Secret."
 msgstr ""
 
-#: assets/js/drivetestpage.min.js:598
+#: assets/js/drivetestpage.min.js:605
 msgid "Client ID"
 msgstr ""
 
-#: assets/js/drivetestpage.min.js:602
+#: assets/js/drivetestpage.min.js:609
 msgid "Client Secret"
 msgstr ""
 
-#: assets/js/drivetestpage.min.js:607
+#: assets/js/drivetestpage.min.js:614
 msgid "Redirect URI:"
 msgstr ""
 
-#: assets/js/drivetestpage.min.js:610
+#: assets/js/drivetestpage.min.js:617
 msgid "Copy this URI to your Google Cloud Console OAuth credential configuration."
 msgstr ""
 
-#: assets/js/drivetestpage.min.js:613
+#: assets/js/drivetestpage.min.js:620
 msgid "Required Scopes"
 msgstr ""
 
-#: assets/js/drivetestpage.min.js:621
+#: assets/js/drivetestpage.min.js:628
 msgid "Update Credentials"
 msgstr ""
 
-#: assets/js/drivetestpage.min.js:621
+#: assets/js/drivetestpage.min.js:628
 msgid "Save Credentials"
 msgstr ""
 
-#: assets/js/drivetestpage.min.js:636
+#: assets/js/drivetestpage.min.js:641
 msgid "Auth URL not received"
 msgstr ""
 
-#: assets/js/drivetestpage.min.js:647
+#: assets/js/drivetestpage.min.js:665
 msgid "Authorization"
 msgstr ""
 
-#: assets/js/drivetestpage.min.js:652
+#: assets/js/drivetestpage.min.js:670
 msgid "Your site is authorized with Google Drive."
 msgstr ""
 
-#: assets/js/drivetestpage.min.js:653
+#: assets/js/drivetestpage.min.js:671
 msgid "You are not authorized yet. Click the button below to connect Google Drive."
 msgstr ""
 
-#: assets/js/drivetestpage.min.js:659
+#: assets/js/drivetestpage.min.js:677
 msgid "Redirecting…"
 msgstr ""
 
-#: assets/js/drivetestpage.min.js:659
+#: assets/js/drivetestpage.min.js:677
 msgid "Authorize with Google"
 msgstr ""
 
-#: assets/js/drivetestpage.min.js:689
+#: assets/js/drivetestpage.min.js:707
 msgid "Uploaded"
 msgstr ""
 
-#: assets/js/drivetestpage.min.js:712
+#: assets/js/drivetestpage.min.js:730
 msgid "Google Drive Files"
 msgstr ""
 
-#: assets/js/drivetestpage.min.js:717
+#: assets/js/drivetestpage.min.js:735
 msgid "Query"
 msgstr ""
 
-#: assets/js/drivetestpage.min.js:721
+#: assets/js/drivetestpage.min.js:739
 msgid "Page size"
 msgstr ""
 
-#: assets/js/drivetestpage.min.js:726
+#: assets/js/drivetestpage.min.js:744
 msgid "List files"
 msgstr ""
 
-#: assets/js/drivetestpage.min.js:734
+#: assets/js/drivetestpage.min.js:752
 msgid "Upload file"
 msgstr ""
 
-#: assets/js/drivetestpage.min.js:739
+#: assets/js/drivetestpage.min.js:757
 msgid "Upload"
 msgstr ""
 
-#: assets/js/drivetestpage.min.js:747
+#: assets/js/drivetestpage.min.js:765
 msgid "New folder name"
 msgstr ""
 
-#: assets/js/drivetestpage.min.js:752
+#: assets/js/drivetestpage.min.js:770
 msgid "Create folder"
 msgstr ""
 
-#: assets/js/drivetestpage.min.js:766
+#: assets/js/drivetestpage.min.js:784
 msgid "Open"
 msgstr ""
 
-#: assets/js/drivetestpage.min.js:767
+#: assets/js/drivetestpage.min.js:785
 msgid "Download"
 msgstr ""
