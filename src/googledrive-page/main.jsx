@@ -1,4 +1,4 @@
-import { createRoot, render, createElement, Fragment, StrictMode, useState, useEffect, createInterpolateElement } from '@wordpress/element';
+import { createRoot, render, createElement, Fragment, StrictMode, useState, useEffect, useRef, createInterpolateElement } from '@wordpress/element';
 import { Button, TextControl, Spinner, Notice } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import "./scss/style.scss"

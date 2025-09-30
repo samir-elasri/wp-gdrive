@@ -30,12 +30,9 @@
 		"yoast/phpunit-polyfills": "^2.0"
 	},
 	"scripts": {
-		"post-install-cmd": [
-			"Google_Task_Composer::cleanup"
-		],
-		"post-update-cmd": [
-			"Google_Task_Composer::cleanup"
-		]
+		"lint": "phpcs --standard=phpcs.ruleset.xml .",
+        "lint:fix": "phpcbf --standard=phpcs.ruleset.xml .",
+        "test": "phpunit --configuration phpunit.xml.dist"
 	},
 	"autoload": {
         "classmap": ["core/", "app/"]
