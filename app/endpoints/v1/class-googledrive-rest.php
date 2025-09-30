@@ -129,7 +129,7 @@ class Drive_API extends Base {
 		register_rest_route( 'wpmudev/v1/drive', '/callback', array(
 			'methods'             => 'GET',
 			'callback'            => array( $this, 'handle_callback' ),
-			'permission_callback' => '__return_true', // must be public for Google redirect
+			'permission_callback' => '__return_true',
 		) );
 
 		register_rest_route( 'wpmudev/v1/drive', '/files', array(
@@ -213,8 +213,39 @@ class Drive_API extends Base {
 			$expires_at = ! empty( $token['expires_in'] ) ? time() + (int) $token['expires_in'] : ( time() + 3600 );
 			update_option( 'wpmudev_drive_token_expires', $expires_at );
 
-			echo '<script>window.close && window.close();</script>';
-			echo esc_html__( 'Authentication complete. You can close this window.', 'wpmudev-plugin-test' );
+			// After saving tokens successfully, output:
+			$admin_url = admin_url( 'admin.php?page=wpmudev-googledrive-test' );
+			?>
+			<!doctype html>
+			<html>
+			<head>
+			<meta charset="utf-8">
+			<title><?php echo esc_html__( 'Authentication complete', 'wpmudev-plugin-test' ); ?></title>
+			</head>
+			<body>
+			<script>
+			(function () {
+			// If opened from a popup, notify the opener and close.
+			if (window.opener && !window.opener.closed) {
+				try {
+				window.opener.postMessage({ type: 'wpmudev-drive-auth', success: true }, window.location.origin);
+				} catch (e) { /* noop */ }
+				window.close();
+				return;
+			}
+			// If not a popup (same-tab), just send the user back to the settings page.
+			window.location.replace('<?php echo esc_js( $admin_url ); ?>');
+			})();
+			</script>
+			<noscript>
+			<?php echo esc_html__( 'Authentication complete. You can close this window.', 'wpmudev-plugin-test' ); ?>
+			<p><a href="<?php echo esc_url( $admin_url ); ?>">
+				<?php echo esc_html__( 'Return to settings', 'wpmudev-plugin-test' ); ?>
+			</a></p>
+			</noscript>
+			</body>
+			</html>
+			<?php
 			exit;
 		} catch ( \Exception $e ) {
 			wp_die( 'Failed to get access token: ' . esc_html( $e->getMessage() ) );

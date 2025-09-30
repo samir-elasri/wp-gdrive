@@ -32,7 +32,14 @@ const WPMUDEV_DriveTest = () => {
     });
 
     useEffect(() => {
-    }, [isAuthenticated]);
+      const onMsg = (e) => {
+        if (e?.data?.type === 'wpmudev-drive-auth' && e.data.success) {
+          onAuthorized && onAuthorized();
+        }
+      };
+      window.addEventListener('message', onMsg);
+      return () => window.removeEventListener('message', onMsg);
+    }, [onAuthorized]);
 
     const showNotice = (message, type = 'success') => {
         setNotice({ message, type });
@@ -338,15 +345,26 @@ function CredentialsForm({ nonce, endpoints, onSaved, hasCredentials, redirectUr
   );
 }
 
-// [ADD] AuthBlock
 function AuthBlock({ nonce, endpoints, authStatus, onAuthorized }) {
   const [loading, setLoading] = useState(false);
   const startAuth = async () => {
     setLoading(true);
     try {
       const data = await api(endpoints.restEndpointAuth, { method: 'POST', nonce });
-      if (data?.authUrl) window.location.assign(data.authUrl);
-      else throw new Error(__('Auth URL not received', 'wpmudev-plugin-test'));
+      if (!data?.authUrl) throw new Error(__('Auth URL not received', 'wpmudev-plugin-test'));
+
+      const w = 600, h = 700;
+      const y = window.top.outerHeight / 2 + window.top.screenY - (h / 2);
+      const x = window.top.outerWidth / 2 + window.top.screenX - (w / 2);
+      const popup = window.open(
+        data.authUrl,
+        'wpmudev-google-auth',
+        `width=${w},height=${h},left=${x},top=${y},resizable,scrollbars`
+      );
+
+      if (!popup || popup.closed || typeof popup.closed === 'undefined') {
+        window.location.assign(data.authUrl);
+      }
     } catch (e) {
       alert(e.message);
     } finally {
