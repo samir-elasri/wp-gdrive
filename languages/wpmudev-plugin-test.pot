@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-09-30T19:49:19+00:00\n"
+"POT-Creation-Date: 2025-09-30T21:08:22+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 
@@ -79,6 +79,28 @@ msgstr ""
 msgid "Folder name is required."
 msgstr ""
 
+#: app/posts-maintenance/class-posts-maintenance.php:19
+#: app/posts-maintenance/class-posts-maintenance.php:20
+#: app/posts-maintenance/class-posts-maintenance.php:31
+msgid "Posts Maintenance"
+msgstr ""
+
+#: app/posts-maintenance/class-posts-maintenance.php:32
+msgid "Scan all public posts and pages to update last scan timestamp."
+msgstr ""
+
+#: app/posts-maintenance/class-posts-maintenance.php:35
+msgid "Scan Posts"
+msgstr ""
+
+#: app/posts-maintenance/class-posts-maintenance.php:44
+msgid "Scanning..."
+msgstr ""
+
+#: app/posts-maintenance/class-posts-maintenance.php:65
+msgid "Scan complete. Updated %d posts."
+msgstr ""
+
 #: assets/js/drivetestpage.min.js:600
 msgid "Google API Credentials"
 msgstr ""
@@ -139,46 +161,50 @@ msgstr ""
 msgid "Authorize with Google"
 msgstr ""
 
-#: assets/js/drivetestpage.min.js:707
+#: assets/js/drivetestpage.min.js:717
 msgid "Uploaded"
 msgstr ""
 
-#: assets/js/drivetestpage.min.js:730
+#: assets/js/drivetestpage.min.js:745
 msgid "Google Drive Files"
 msgstr ""
 
-#: assets/js/drivetestpage.min.js:735
+#: assets/js/drivetestpage.min.js:750
 msgid "Query"
 msgstr ""
 
-#: assets/js/drivetestpage.min.js:739
+#: assets/js/drivetestpage.min.js:754
 msgid "Page size"
 msgstr ""
 
-#: assets/js/drivetestpage.min.js:744
+#: assets/js/drivetestpage.min.js:759
 msgid "List files"
 msgstr ""
 
-#: assets/js/drivetestpage.min.js:752
+#: assets/js/drivetestpage.min.js:767
 msgid "Upload file"
 msgstr ""
 
-#: assets/js/drivetestpage.min.js:757
+#: assets/js/drivetestpage.min.js:782
+msgid "Uploading…"
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:782
 msgid "Upload"
 msgstr ""
 
-#: assets/js/drivetestpage.min.js:765
+#: assets/js/drivetestpage.min.js:791
 msgid "New folder name"
 msgstr ""
 
-#: assets/js/drivetestpage.min.js:770
+#: assets/js/drivetestpage.min.js:796
 msgid "Create folder"
 msgstr ""
 
-#: assets/js/drivetestpage.min.js:784
+#: assets/js/drivetestpage.min.js:810
 msgid "Open"
 msgstr ""
 
-#: assets/js/drivetestpage.min.js:785
+#: assets/js/drivetestpage.min.js:811
 msgid "Download"
 msgstr ""

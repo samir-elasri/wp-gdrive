@@ -402,6 +402,9 @@ function FilesBlock({ nonce, endpoints }) {
   const [files, setFiles] = useState([]);
   const [uploadFile, setUploadFile] = useState(null);
   const [newFolder, setNewFolder] = useState('');
+  const [uploading, setUploading] = useState(false);
+  const fileInputRef = useRef(null);
+  const [inputKey, setInputKey] = useState(0);
 
   const load = async () => {
     const data = await api(endpoints.restEndpointFiles + `?q=${encodeURIComponent(query)}&page_size=${pageSize}`, { nonce });
@@ -409,16 +412,28 @@ function FilesBlock({ nonce, endpoints }) {
   };
 
   const upload = async () => {
-    if (!uploadFile) return;
-    const res = await fetch(endpoints.restEndpointUpload, {
-      method: 'POST',
-      headers: { 'X-WP-Nonce': nonce },
-      body: (() => { const f = new FormData(); f.append('file', uploadFile); return f; })(),
-    });
-    const data = await res.json();
-    if (!res.ok) throw new Error(data?.message || 'Upload failed');
-    alert(__('Uploaded', 'wpmudev-plugin-test'));
-    load();
+    if (!uploadFile || uploading) return;
+    setUploading(true);
+    try {
+      const res = await fetch(endpoints.restEndpointUpload, {
+        method: 'POST',
+        headers: { 'X-WP-Nonce': nonce },
+        body: (() => { const f = new FormData(); f.append('file', uploadFile); return f; })(),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data?.message || 'Upload failed');
+
+      setUploadFile(null);
+      if (fileInputRef.current) fileInputRef.current.value = '';
+      setInputKey(k => k + 1);
+
+      alert(__('Uploaded', 'wpmudev-plugin-test'));
+      load();
+    } catch (e) {
+      alert(e.message);
+    } finally {
+      setUploading(false);
+    }
   };
 
   const download = async (id) => {
@@ -463,11 +478,22 @@ function FilesBlock({ nonce, endpoints }) {
         <div className="sui-row">
           <div className="sui-col-md-6">
             <label className="sui-label">{__('Upload file', 'wpmudev-plugin-test')}</label>
-            <input type="file" onChange={e => setUploadFile(e.target.files?.[0] || null)} />
+            <input
+              key={inputKey}
+              ref={fileInputRef}
+              type="file"
+              onChange={e => setUploadFile(e.target.files?.[0] || null)}
+            />
           </div>
           <div className="sui-col-md-3">
             <label className="sui-label">&nbsp;</label>
-            <button className="sui-button" onClick={upload}>{__('Upload', 'wpmudev-plugin-test')}</button>
+            <button
+              className="sui-button"
+              onClick={upload}
+              disabled={!uploadFile || uploading}
+            >
+              {uploading ? __('Uploading…', 'wpmudev-plugin-test') : __('Upload', 'wpmudev-plugin-test')}
+            </button>
           </div>
         </div>
 
