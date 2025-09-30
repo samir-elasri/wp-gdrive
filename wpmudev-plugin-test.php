@@ -45,7 +45,7 @@ if ( ! defined( 'WPMUDEV_PLUGINTEST_URL' ) ) {
 
 // Assets url.
 if ( ! defined( 'WPMUDEV_PLUGINTEST_ASSETS_URL' ) ) {
-	define( 'WPMUDEV_PLUGINTEST_ASSETS_URL', WPMUDEV_PLUGINTEST_URL . '/assets' );
+    define( 'WPMUDEV_PLUGINTEST_ASSETS_URL', untrailingslashit( WPMUDEV_PLUGINTEST_URL ) . '/assets' );
 }
 
 // Shared UI Version.

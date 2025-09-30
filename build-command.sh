@@ -1,1 +1,0 @@
-rm -rf build/ && mkdir -p build/wpmudev-plugin-test && cp -r app/ assets/ core/ vendor/ languages/ *.php *.txt build/wpmudev-plugin-test/ 2>/dev/null && cd build && zip -r wpmudev-plugin-test.zip wpmudev-plugin-test/ && cd .. && ls -la build/wpmudev-plugin-test/
