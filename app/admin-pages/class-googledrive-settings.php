@@ -31,7 +31,7 @@ class Google_Drive extends Base {
 	 *
 	 * @var string
 	 */
-	private $page_slug = 'wpmudev_plugintest_drive';
+	private $page_slug = 'wpmudev-googledrive-test';
 
 	/**
 	 * Google Drive auth credentials.
@@ -47,13 +47,17 @@ class Google_Drive extends Base {
 	 *
 	 * @var string
 	 */
-	private $option_name = 'wpmudev_plugin_tests_auth';
+	private $option_name = 'wpmudev_drive_credentials';
 
 	/**
 	 * Page Assets.
 	 *
 	 * @var array
 	 */
+
+	private $handle = 'wpmudev-plugintest-googledrive';
+	/** @var string */
+
 	private $page_scripts = array();
 
 	/**
@@ -79,28 +83,24 @@ class Google_Drive extends Base {
 	 */
 	public function init() {
 		$this->page_title     = __( 'Google Drive Test', 'wpmudev-plugin-test' );
-		$this->creds          = get_option( $this->option_name, array() );
-		$this->assets_version = ! empty( $this->script_data( 'version' ) ) ? $this->script_data( 'version' ) : WPMUDEV_PLUGINTEST_VERSION;
+		$this->assets_version = defined( 'WPMUDEV_PLUGINTEST_VERSION' ) ? WPMUDEV_PLUGINTEST_VERSION : '1.0.0';
 		$this->unique_id      = "wpmudev_plugintest_drive_main_wrap-{$this->assets_version}";
+		$this->creds          = (array) get_option( $this->option_name, array() );
 
 		add_action( 'admin_menu', array( $this, 'register_admin_page' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_assets' ) );
-		// Add body class to admin pages.
 		add_filter( 'admin_body_class', array( $this, 'admin_body_classes' ) );
 	}
 
 	public function register_admin_page() {
-		$page = add_menu_page(
-			'Google Drive Test',
-			$this->page_title,
+		add_menu_page(
+			__( 'Google Drive Test', 'wpmudev-plugin-test' ),
+			__( 'Google Drive Test', 'wpmudev-plugin-test' ),
 			'manage_options',
 			$this->page_slug,
 			array( $this, 'callback' ),
-			'dashicons-cloud',
-			7
+			'dashicons-google'
 		);
-
-		add_action( 'load-' . $page, array( $this, 'prepare_assets' ) );
 	}
 
 	/**
@@ -109,7 +109,10 @@ class Google_Drive extends Base {
 	 * @return void
 	 */
 	public function callback() {
-		$this->view();
+		echo '<div class="wrap">';
+		echo '<h1>' . esc_html__( 'Google Drive Test', 'wpmudev-plugin-test' ) . '</h1>';
+		echo '<div id="' . esc_attr( $this->unique_id ) . '"></div>';
+		echo '</div>';
 	}
 
 	/**
@@ -164,9 +167,10 @@ class Google_Drive extends Base {
 	 */
 	private function get_auth_status() {
 		$access_token = get_option( 'wpmudev_drive_access_token', '' );
-		$expires_at   = get_option( 'wpmudev_drive_token_expires', 0 );
-		
-		return ! empty( $access_token ) && time() < $expires_at;
+		$expires_at   = (int) get_option( 'wpmudev_drive_token_expires', 0 );
+		if ( empty( $access_token ) ) return false;
+		if ( $expires_at > 0 && time() >= $expires_at ) return false;
+		return true;
 	}
 
 	/**
@@ -202,28 +206,36 @@ class Google_Drive extends Base {
 	 *
 	 * @return void
 	 */
-	public function enqueue_assets() {
-		if ( ! empty( $this->page_scripts ) ) {
-			foreach ( $this->page_scripts as $handle => $page_script ) {
-				wp_register_script(
-					$handle,
-					$page_script['src'],
-					$page_script['deps'],
-					$page_script['ver'],
-					$page_script['strategy']
-				);
-
-				if ( ! empty( $page_script['localize'] ) ) {
-					wp_localize_script( $handle, 'wpmudevDriveTest', $page_script['localize'] );
-				}
-
-				wp_enqueue_script( $handle );
-
-				if ( ! empty( $page_script['style_src'] ) ) {
-					wp_enqueue_style( $handle, $page_script['style_src'], array(), $this->assets_version );
-				}
-			}
+	public function enqueue_assets( $hook ) {
+		$screen = get_current_screen();
+		if ( empty( $screen->id ) || false === strpos( $screen->id, $this->page_slug ) ) {
+			return;
 		}
+
+		$js   = WPMUDEV_PLUGINTEST_URL . 'assets/js/drivetestpage.min.js';
+		$css  = WPMUDEV_PLUGINTEST_URL . 'assets/css/drivetestpage.min.css';
+		$deps = array( 'react', 'react-dom', 'wp-element', 'wp-i18n', 'wp-is-shallow-equal' );
+
+		wp_enqueue_style( $this->handle, $css, array(), $this->assets_version );
+		wp_enqueue_script( $this->handle, $js, $deps, $this->assets_version, true );
+
+		wp_localize_script(
+			$this->handle,
+			'WPMUDEV_PLUGINTEST',
+			array(
+				'dom_element_id'       => $this->unique_id,
+				'restEndpointSave'     => rest_url( 'wpmudev/v1/drive/save-credentials' ),
+				'restEndpointAuth'     => rest_url( 'wpmudev/v1/drive/auth' ),
+				'restEndpointFiles'    => rest_url( 'wpmudev/v1/drive/files' ),
+				'restEndpointUpload'   => rest_url( 'wpmudev/v1/drive/upload' ),
+				'restEndpointDownload' => rest_url( 'wpmudev/v1/drive/download' ),
+				'restEndpointCreate'   => rest_url( 'wpmudev/v1/drive/create-folder' ),
+				'nonce'                => wp_create_nonce( 'wp_rest' ),
+				'authStatus'           => $this->get_auth_status(),
+				'redirectUri'          => home_url( '/wp-json/wpmudev/v1/drive/callback' ),
+				'hasCredentials'       => ! empty( $this->creds['client_id'] ) && ! empty( $this->creds['client_secret'] ),
+			)
+		);
 	}
 
 	/**
@@ -242,19 +254,14 @@ class Google_Drive extends Base {
 	 *
 	 * @return string
 	 */
-	public function admin_body_classes( $classes = '' ) {
-		if ( ! function_exists( 'get_current_screen' ) ) {
+	public function admin_body_classes( $classes ) {
+		$screen = get_current_screen();
+		if ( empty( $screen->id ) || false === strpos( $screen->id, $this->page_slug ) ) {
 			return $classes;
 		}
-
-		$current_screen = get_current_screen();
-
-		if ( empty( $current_screen->id ) || ! strpos( $current_screen->id, $this->page_slug ) ) {
-			return $classes;
+		if ( defined( 'WPMUDEV_PLUGINTEST_SUI_VERSION' ) ) {
+			$classes .= ' sui-' . str_replace( '.', '-', WPMUDEV_PLUGINTEST_SUI_VERSION ) . ' ';
 		}
-
-		$classes .= ' sui-' . str_replace( '.', '-', WPMUDEV_PLUGINTEST_SUI_VERSION ) . ' ';
-
 		return $classes;
 	}
 }

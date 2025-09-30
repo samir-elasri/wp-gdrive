@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-09-30T17:05:38+00:00\n"
+"POT-Creation-Date: 2025-09-30T17:19:24+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 
@@ -27,4 +27,108 @@ msgstr ""
 
 #: app/admin-pages/class-googledrive-settings.php:81
 msgid "Google Drive Test"
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:592
+msgid "Google API Credentials"
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:595
+msgid "Enter your Google OAuth 2.0 Client ID and Client Secret."
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:597
+msgid "Client ID"
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:601
+msgid "Client Secret"
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:606
+msgid "Redirect URI:"
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:609
+msgid "Copy this URI to your Google Cloud Console OAuth credential configuration."
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:612
+msgid "Required Scopes"
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:620
+msgid "Update Credentials"
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:620
+msgid "Save Credentials"
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:635
+msgid "Auth URL not received"
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:646
+msgid "Authorization"
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:651
+msgid "Your site is authorized with Google Drive."
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:652
+msgid "You are not authorized yet. Click the button below to connect Google Drive."
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:658
+msgid "Redirecting…"
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:658
+msgid "Authorize with Google"
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:688
+msgid "Uploaded"
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:711
+msgid "Google Drive Files"
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:716
+msgid "Query"
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:720
+msgid "Page size"
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:725
+msgid "List files"
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:733
+msgid "Upload file"
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:738
+msgid "Upload"
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:746
+msgid "New folder name"
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:751
+msgid "Create folder"
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:765
+msgid "Open"
+msgstr ""
+
+#: assets/js/drivetestpage.min.js:766
+msgid "Download"
 msgstr ""
