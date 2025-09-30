@@ -3,7 +3,8 @@ import { Button, TextControl, Spinner, Notice } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import "./scss/style.scss"
 
-const domElement = document.getElementById( window.wpmudevDriveTest.dom_element_id );
+const _config = window.WPMUDEV_PLUGINTEST || {};
+const domElement = document.getElementById(_config.dom_element_id || 'wpmudev_plugintest_drive_main_wrap');
 
 const api = (path, { method = 'GET', body, nonce } = {}) => {
   const headers = { 'Content-Type': 'application/json' };
@@ -17,9 +18,9 @@ const api = (path, { method = 'GET', body, nonce } = {}) => {
 };
 
 const WPMUDEV_DriveTest = () => {
-    const [isAuthenticated, setIsAuthenticated] = useState(window.wpmudevDriveTest.authStatus || false);
-    const [hasCredentials, setHasCredentials] = useState(window.wpmudevDriveTest.hasCredentials || false);
-    const [showCredentials, setShowCredentials] = useState(!window.wpmudevDriveTest.hasCredentials);
+    const [isAuthenticated, setIsAuthenticated] = useState(window.WPMUDEV_PLUGINTEST.authStatus || false);
+    const [hasCredentials, setHasCredentials] = useState(window.WPMUDEV_PLUGINTEST.hasCredentials || false);
+    const [showCredentials, setShowCredentials] = useState(!window.WPMUDEV_PLUGINTEST.hasCredentials);
     const [isLoading, setIsLoading] = useState(false);
     const [files, setFiles] = useState([]);
     const [uploadFile, setUploadFile] = useState(null);
@@ -108,7 +109,7 @@ const WPMUDEV_DriveTest = () => {
                         </div>
 
                         <div className="sui-box-settings-row">
-                            <span>Please use this URL <em>{window.wpmudevDriveTest.redirectUri}</em> in your Google API's <strong>Authorized redirect URIs</strong> field.</span>
+                            <span>Please use this URL <em>{window.WPMUDEV_PLUGINTEST.redirectUri}</em> in your Google API's <strong>Authorized redirect URIs</strong> field.</span>
                         </div>
 
                         <div className="sui-box-settings-row">
@@ -535,11 +536,11 @@ function App() {
   );
 }
 
-if ( createRoot ) {
-    createRoot( domElement ).render(<StrictMode><WPMUDEV_DriveTest/></StrictMode>);
-} else {
-    render( <StrictMode><WPMUDEV_DriveTest/></StrictMode>, domElement );
-}
+// if ( createRoot ) {
+//     createRoot( domElement ).render(<StrictMode><WPMUDEV_DriveTest/></StrictMode>);
+// } else {
+//     render( <StrictMode><WPMUDEV_DriveTest/></StrictMode>, domElement );
+// }
 
 // [ADD bootstrapping]
 document.addEventListener('DOMContentLoaded', () => {

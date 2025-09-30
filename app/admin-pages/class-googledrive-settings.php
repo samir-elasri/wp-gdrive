@@ -236,6 +236,7 @@ class Google_Drive extends Base {
 				'hasCredentials'       => ! empty( $this->creds['client_id'] ) && ! empty( $this->creds['client_secret'] ),
 			)
 		);
+
 	}
 
 	/**
