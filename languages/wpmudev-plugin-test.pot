@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-09-30T17:48:45+00:00\n"
+"POT-Creation-Date: 2025-09-30T18:09:35+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 
@@ -30,6 +30,45 @@ msgstr ""
 #: app/admin-pages/class-googledrive-settings.php:98
 #: app/admin-pages/class-googledrive-settings.php:113
 msgid "Google Drive Test"
+msgstr ""
+
+#: app/endpoints/v1/class-googledrive-rest.php:107
+msgid "Insufficient permissions."
+msgstr ""
+
+#: app/endpoints/v1/class-googledrive-rest.php:111
+msgid "Invalid REST nonce."
+msgstr ""
+
+#: app/endpoints/v1/class-googledrive-rest.php:168
+msgid "Client ID and Client Secret are required."
+msgstr ""
+
+#: app/endpoints/v1/class-googledrive-rest.php:200
+msgid "Authorization code not received."
+msgstr ""
+
+#: app/endpoints/v1/class-googledrive-rest.php:217
+msgid "Authentication complete. You can close this window."
+msgstr ""
+
+#: app/endpoints/v1/class-googledrive-rest.php:259
+#: app/endpoints/v1/class-googledrive-rest.php:297
+#: app/endpoints/v1/class-googledrive-rest.php:338
+#: app/endpoints/v1/class-googledrive-rest.php:366
+msgid "Not authenticated with Google Drive."
+msgstr ""
+
+#: app/endpoints/v1/class-googledrive-rest.php:300
+msgid "No file uploaded."
+msgstr ""
+
+#: app/endpoints/v1/class-googledrive-rest.php:342
+msgid "File ID is required."
+msgstr ""
+
+#: app/endpoints/v1/class-googledrive-rest.php:370
+msgid "Folder name is required."
 msgstr ""
 
 #: assets/js/drivetestpage.min.js:593

@@ -217,6 +217,7 @@ class Google_Drive extends Base {
 		$deps = array( 'react', 'react-dom', 'wp-element', 'wp-i18n', 'wp-is-shallow-equal' );
 
 		wp_enqueue_style( $this->handle, $css, array(), $this->assets_version );
+		wp_enqueue_style( 'wpmudev-sui', 'https://wpmudev.com/some/sui.css' );
 		wp_enqueue_script( $this->handle, $js, $deps, $this->assets_version, true );
 
 		wp_localize_script(
