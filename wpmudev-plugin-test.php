@@ -22,7 +22,6 @@ if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
 	require_once __DIR__ . '/vendor/autoload.php';
 }
 
-
 // Plugin version.
 if ( ! defined( 'WPMUDEV_PLUGINTEST_VERSION' ) ) {
 	define( 'WPMUDEV_PLUGINTEST_VERSION', '1.0.0' );
@@ -45,14 +44,13 @@ if ( ! defined( 'WPMUDEV_PLUGINTEST_URL' ) ) {
 
 // Assets url.
 if ( ! defined( 'WPMUDEV_PLUGINTEST_ASSETS_URL' ) ) {
-    define( 'WPMUDEV_PLUGINTEST_ASSETS_URL', untrailingslashit( WPMUDEV_PLUGINTEST_URL ) . '/assets' );
+	define( 'WPMUDEV_PLUGINTEST_ASSETS_URL', untrailingslashit( WPMUDEV_PLUGINTEST_URL ) . '/assets' );
 }
 
 // Shared UI Version.
 if ( ! defined( 'WPMUDEV_PLUGINTEST_SUI_VERSION' ) ) {
 	define( 'WPMUDEV_PLUGINTEST_SUI_VERSION', '2.12.23' );
 }
-
 
 /**
  * WPMUDEV_PluginTest class.
@@ -71,9 +69,9 @@ class WPMUDEV_PluginTest {
 	 *
 	 * Return an instance of the WPMUDEV_PluginTest Class.
 	 *
-	 * @return WPMUDEV_PluginTest class instance.
 	 * @since 1.0.0
 	 *
+	 * @return WPMUDEV_PluginTest class instance.
 	 */
 	public static function get_instance() {
 		if ( null === self::$instance ) {
@@ -104,15 +102,18 @@ require_once __DIR__ . '/app/posts-maintenance/class-posts-maintenance.php';
 require_once __DIR__ . '/app/posts-maintenance/class-posts-maintenance-cron.php';
 require_once __DIR__ . '/app/posts-maintenance/class-posts-maintenance-cli.php';
 
-add_action( 'plugins_loaded', function() {
-    // Initialize the admin page + AJAX
-    $pm = new WPMUDEV_Posts_Maintenance();
-    $pm->init();
+add_action(
+	'plugins_loaded',
+	function () {
+		// Initialize the admin page + AJAX.
+		$pm = new WPMUDEV_Posts_Maintenance();
+		$pm->init();
 
-    // Initialize daily cron
-    $cron = new WPMUDEV_Posts_Maintenance_Cron();
-    $cron->init();
-});
+		// Initialize daily cron.
+		$cron = new WPMUDEV_Posts_Maintenance_Cron();
+		$cron->init();
+	}
+);
 
 // Init the plugin and load the plugin instance for the first time.
 add_action(
@@ -122,4 +123,3 @@ add_action(
 	},
 	9
 );
-

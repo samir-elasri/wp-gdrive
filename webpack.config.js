@@ -17,6 +17,13 @@ module.exports = {
 		assetModuleFilename: 'images/[name][ext][query]',
 	},
 
+	externals: {
+		// Externalize WordPress dependencies to reduce bundle size
+		'@wordpress/element': 'wp.element',
+		'@wordpress/i18n': 'wp.i18n',
+		'@wordpress/components': 'wp.components'
+	},
+
 	resolve: {
 		extensions: ['.js', '.jsx'],
 	},

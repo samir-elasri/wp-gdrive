@@ -20,6 +20,13 @@ use WP_REST_Controller;
 // If this file is called directly, abort.
 defined( 'WPINC' ) || die;
 
+/**
+ * Class Endpoint
+ *
+ * Base class for REST API endpoints.
+ *
+ * @since 1.0.0
+ */
 class Endpoint extends WP_REST_Controller {
 	/**
 	 * API endpoint version.
@@ -87,7 +94,6 @@ class Endpoint extends WP_REST_Controller {
 	 *
 	 * @return void
 	 * @since 1.0.0
-	 *
 	 */
 	public function register_hooks() {
 		add_action( 'rest_api_init', array( $this, 'register_routes' ) );
@@ -100,7 +106,6 @@ class Endpoint extends WP_REST_Controller {
 	 *
 	 * @return bool
 	 * @since 1.0.0
-	 *
 	 */
 	public function edit_permission( $request ) {
 		$capable = current_user_can( 'manage_options' );
@@ -113,7 +118,6 @@ class Endpoint extends WP_REST_Controller {
 		 * @param bool            $capable Is user capable?.
 		 *
 		 * @since 1.0.0
-		 *
 		 */
 		return apply_filters( 'wpmudev_plugintest_rest_settings_permission', $capable, $request );
 	}
@@ -126,7 +130,6 @@ class Endpoint extends WP_REST_Controller {
 	 *
 	 * @return WP_REST_Response
 	 * @since 1.0.0
-	 *
 	 */
 	public function get_response( $data = array(), $success = true ) {
 		// Response status.
@@ -159,6 +162,12 @@ class Endpoint extends WP_REST_Controller {
 		return $this->endpoint;
 	}
 
+	/**
+	 * Get endpoint URL.
+	 *
+	 * @since 1.0.0
+	 * @return string
+	 */
 	public function get_endpoint_url() {
 		return trailingslashit( rest_url() ) . trailingslashit( $this->get_namespace() ) . $this->get_endpoint();
 	}
