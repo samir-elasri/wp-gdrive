@@ -1,66 +1,67 @@
 <?php
 /**
- * Loader class file.
+ * Class to boot up plugin.
  *
- * @package WPMUDEV\PluginTest
+ * @link    https://wpmudev.com/
+ * @since   1.0.0
+ *
+ * @author  WPMUDEV (https://wpmudev.com)
+ * @package WPMUDEV_PluginTest
+ *
+ * @copyright (c) 2025, Incsub (http://incsub.com)
  */
 
 namespace WPMUDEV\PluginTest;
 
-// Abort if called directly.
+use WPMUDEV\PluginTest\Base;
+
+// If this file is called directly, abort.
 defined( 'WPINC' ) || die;
 
-/**
- * Class Loader
- *
- * Handles the loading and initialization of plugin components.
- *
- * @since 1.0.0
- */
-class Loader extends Singleton {
-
+final class Loader extends Base {
 	/**
-	 * Constructor.
+	 * Settings helper class instance.
 	 *
 	 * @since 1.0.0
+	 * @var object
+	 *
 	 */
-	public function __construct() {
+	public $settings;
+
+	/**
+	 * Minimum supported php version.
+	 *
+	 * @since  1.0.0
+	 * @var float
+	 *
+	 */
+	public $php_version = '7.4';
+
+	/**
+	 * Minimum WordPress version.
+	 *
+	 * @since  1.0.0
+	 * @var float
+	 *
+	 */
+	public $wp_version = '6.1';
+
+	/**
+	 * Initialize functionality of the plugin.
+	 *
+	 * This is where we kick-start the plugin by defining
+	 * everything required and register all hooks.
+	 *
+	 * @since  1.0.0
+	 * @access protected
+	 * @return void
+	 */
+	protected function __construct() {
 		if ( ! $this->can_boot() ) {
 			return;
 		}
 
 		$this->init();
-	}
-
-	/**
-	 * Initialize the loader.
-	 *
-	 * @since 1.0.0
-	 * @return void
-	 */
-	public function init() {
-		$this->load_admin_pages();
-		$this->load_endpoints();
-	}
-
-	/**
-	 * Load admin pages.
-	 *
-	 * @since 1.0.0
-	 * @return void
-	 */
-	public function load_admin_pages() {
-		App\Admin_Pages\Google_Drive::instance()->init();
-	}
-
-	/**
-	 * Load endpoints.
-	 *
-	 * @since 1.0.0
-	 * @return void
-	 */
-	public function load_endpoints() {
-		Endpoints\V1\Drive_API::instance()->init();
 	}
 
 	/**
@@ -82,7 +83,7 @@ class Loader extends Singleton {
 			version_compare( $wp_version, $this->wp_version, '>' )
 		);
 	}
-}
+
 	/**
 	 * Register all the actions and filters.
 	 *

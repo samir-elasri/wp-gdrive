@@ -18,11 +18,6 @@ defined( 'WPINC' ) || die;
 
 use WPMUDEV\PluginTest\Base;
 
-/**
- * Class Google_Drive
- *
- * Handles Google Drive test admin page.
- */
 class Google_Drive extends Base {
 	/**
 	 * The page title.
@@ -55,25 +50,18 @@ class Google_Drive extends Base {
 	private $option_name = 'wpmudev_drive_credentials';
 
 	/**
-	 * Page Assets configuration.
-	 *
-	 * Stores the page script configurations and handles for asset management.
+	 * Page Assets.
 	 *
 	 * @var array
 	 */
+
+	private $handle = 'wpmudev-plugintest-googledrive';
+	/** @var string */
+
 	private $page_scripts = array();
 
 	/**
-	 * Assets script handle for WordPress enqueue system.
-	 *
-	 * Handle used for enqueueing scripts and styles in WordPress admin.
-	 *
-	 * @var string
-	 */
-	private $handle = 'wpmudev-plugintest-googledrive';
-
-	/**
-	 * Assets version for cache busting.
+	 * Assets version.
 	 *
 	 * @var string
 	 */
@@ -91,6 +79,7 @@ class Google_Drive extends Base {
 	 *
 	 * @return void
 	 * @since 1.0.0
+	 *
 	 */
 	public function init() {
 		$this->page_title     = __( 'Google Drive Test', 'wpmudev-plugin-test' );
@@ -103,11 +92,6 @@ class Google_Drive extends Base {
 		add_filter( 'admin_body_class', array( $this, 'admin_body_classes' ) );
 	}
 
-	/**
-	 * Register admin page in WordPress admin.
-	 *
-	 * @return void
-	 */
 	public function register_admin_page() {
 		add_menu_page(
 			__( 'Google Drive Test', 'wpmudev-plugin-test' ),
@@ -184,22 +168,16 @@ class Google_Drive extends Base {
 	private function get_auth_status() {
 		$access_token = get_option( 'wpmudev_drive_access_token', '' );
 		$expires_at   = (int) get_option( 'wpmudev_drive_token_expires', 0 );
-		if ( empty( $access_token ) ) {
-			return false;
-		}
-		if ( $expires_at > 0 && time() >= $expires_at ) {
-			return false;
-		}
+		if ( empty( $access_token ) ) return false;
+		if ( $expires_at > 0 && time() >= $expires_at ) return false;
 		return true;
 	}
 
 	/**
 	 * Gets assets data for given key.
 	 *
-	 * Gets the script dependencies and other asset data.
+	 * @param string $key
 	 *
-	 * @since 1.0.0
-	 * @param string $key The data key to retrieve.
 	 * @return string|array
 	 */
 	protected function script_data( string $key = '' ) {
@@ -224,9 +202,8 @@ class Google_Drive extends Base {
 	}
 
 	/**
-	 * Enqueue assets for the admin page.
+	 * Prepares assets.
 	 *
-	 * @param string $hook Current admin page hook.
 	 * @return void
 	 */
 	public function enqueue_assets( $hook ) {
@@ -240,6 +217,7 @@ class Google_Drive extends Base {
 		$deps = array( 'react', 'react-dom', 'wp-element', 'wp-i18n', 'wp-is-shallow-equal' );
 
 		wp_enqueue_style( $this->handle, $css, array(), $this->assets_version );
+		wp_enqueue_style( 'wpmudev-sui', 'https://wpmudev.com/some/sui.css' );
 		wp_enqueue_script( $this->handle, $js, $deps, $this->assets_version, true );
 
 		wp_localize_script(
@@ -259,6 +237,7 @@ class Google_Drive extends Base {
 				'hasCredentials'       => ! empty( $this->creds['client_id'] ) && ! empty( $this->creds['client_secret'] ),
 			)
 		);
+
 	}
 
 	/**
@@ -271,13 +250,11 @@ class Google_Drive extends Base {
 	}
 
 	/**
-	 * Add SUI body classes.
+	 * Adds the SUI class on markup body.
 	 *
-	 * Adds Shared UI classes to admin body for proper styling.
+	 * @param string $classes
 	 *
-	 * @since 1.0.0
-	 * @param string $classes Existing body classes.
-	 * @return string Modified classes string.
+	 * @return string
 	 */
 	public function admin_body_classes( $classes ) {
 		$screen = get_current_screen();
