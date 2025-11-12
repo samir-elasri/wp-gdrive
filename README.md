@@ -1,21 +1,27 @@
-# WPMUDEV Test Plugin #
+# WP Google Drive Manager
 
-This is a plugin that can be used for testing coding skills for WordPress and PHP.
+A lightweight WordPress plugin that provides minimal management of Google Drive files directly from your WordPress dashboard.  
 
-# Development
+## ✨ Features
+- Connect your Google Drive account via OAuth  
+- Browse and list files/folders  
+- Upload and delete files  
 
-## Composer
-Install composer packages
-`composer install`
+## 🧩 Installation
+1. Upload the plugin folder to `/wp-content/plugins/`  
+2. Activate it through the **Plugins** page in WordPress  
+3. Go to **Settings → Google Drive Manager** to connect your account  
 
-## Build Tasks (npm)
-Everything should be handled by npm.
+## ⚙️ Requirements
+- WordPress 6.0+  
+- PHP 7.4+  
+- A Google Cloud project with Drive API enabled  
 
-Install npm packages
-`npm install`
+## 🛠️ Development
+Clone this repository:
+```bash
+git clone https://github.com/yourusername/wp-google-drive-manager.git
+```
 
-| Command              | Action                                                |
-|----------------------|-------------------------------------------------------|
-| `npm run watch`      | Compiles and watch for changes.                       |
-| `npm run compile`    | Compile production ready assets.                      |
-| `npm run build`  | Build production ready bundle inside `/build/` folder |
+## 📄 License
+MIT License  
